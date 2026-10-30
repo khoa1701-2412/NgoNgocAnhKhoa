@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Ngô Ngọc Anh Khoa | Góc Khuất Nhỏ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --sky: #b8e4f5;
+            --blue: #438cac;
+            --deep: #173746;
+            --muted: #526b76;
+            --line: rgba(37, 86, 107, .18);
+            --yellow: #f0c96a;
+            --display: 'Manrope', 'Trebuchet MS', sans-serif;
+            --body: 'DM Sans', 'Segoe UI', sans-serif
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            min-width: 320px;
+            margin: 0;
+            color: var(--deep);
+            background: #d9f0f8;
+            background-image: radial-gradient(ellipse 210px 60px at 12% 18%, rgba(255, 255, 255, .86) 0 48%, transparent 50%), linear-gradient(155deg, #fff 0%, #eaf8fd 31%, #c2e8f6 66%, #a9d8ec 100%);
+            background-attachment: fixed;
+            font-family: var(--body);
+            line-height: 1.65;
+            overflow-x: hidden
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        button {
+            font: inherit
+        }
+
+        .page-width {
+            width: min(1120px, calc(100% - 64px));
+            margin-inline: auto
+        }
+
+        .page-view[hidden] {
+            display: none !important
+        }
+
+        .site-header {
+            position: relative;
+            z-index: 30;
+            display: flex;
+            min-height: 78px;
+            align-items: center;
+            justify-content: space-between;
+            width: min(1240px, calc(100% - 64px));
+            margin-inline: auto;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .wordmark {
+            font: 800 13px/1 var(--display);
+            letter-spacing: .08em
+        }
+
+        .wordmark-dot {
+            color: var(--blue)
+        }
+
+        .main-menu {
+            display: flex;
+            gap: 34px;
+            align-items: center
+        }
+
+        .menu-link {
+            position: relative;
+            padding-block: 26px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 700
+        }
+
+        .menu-link::after {
+            position: absolute;
+            right: 0;
+            bottom: 18px;
+            left: 0;
+            height: 2px;
+            background: var(--blue);
+            content: '';
+            transform: scaleX(0);
+            transition: .2s
+        }
+
+        .menu-link:hover,
+        .menu-link.is-active {
+            color: var(--deep)
+        }
+
+        .menu-link:hover::after,
+        .menu-link.is-active::after {
+            transform: scaleX(1)
+        }
+
+        .menu-toggle {
+            display: none
+        }
+
+        .home-hero {
+            display: grid;
+            min-height: 610px;
+            grid-template-columns: 1fr .92fr;
+            gap: 38px;
+            align-items: center;
+            padding-block: 68px 84px
+        }
+
+        .eyebrow {
+            margin: 0 0 20px;
+            color: var(--blue);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .16em
+        }
+
+        .eyebrow-mark {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            margin-right: 9px;
+            border-radius: 50%;
+            background: var(--yellow)
+        }
+
+        .hero-copy h1,
+        .page-hero h1 {
+            margin-bottom: 24px;
+            font-family: var(--display);
+            font-size: clamp(44px, 6vw, 76px);
+            font-weight: 600;
+            line-height: 1.08
+        }
+
+        .name-highlight {
+            color: var(--blue)
+        }
+
+        .hero-intro,
+        .page-hero-lead {
+            max-width: 455px;
+            margin-bottom: 30px;
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.8
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 23px
+        }
+
+        .button {
+            display: inline-flex;
+            min-height: 48px;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 0 20px;
+            font-size: 12px;
+            font-weight: 800;
+            transition: .2s
+        }
+
+        .button:hover {
+            transform: translateY(-2px)
+        }
+
+        .button-primary {
+            color: #fff;
+            background: var(--deep)
+        }
+
+        .button-primary:hover {
+            background: var(--blue)
+        }
+
+        .text-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--deep);
+            font-size: 12px;
+            font-weight: 800
+        }
+
+        .text-link span {
+            color: var(--blue);
+            font-size: 17px
+        }
+
+        .hero-facts {
+            display: flex;
+            gap: 27px;
+            margin-top: 56px
+        }
+
+        .hero-facts div {
+            display: grid;
+            gap: 3px
+        }
+
+        .hero-facts strong {
+            font: 800 14px var(--display)
+        }
+
+        .hero-facts span {
+            color: var(--muted);
+            font-size: 10px
+        }
+
+        .hero-art {
+            position: relative;
+            display: grid;
+            min-height: 430px;
+            place-items: center
+        }
+
+        .portrait-placeholder {
+            position: relative;
+            width: min(285px, 74%);
+            aspect-ratio: .82;
+            overflow: hidden;
+            border: 7px solid rgba(255, 255, 255, .9);
+            border-radius: 46% 46% 5px 5px;
+            background: linear-gradient(150deg, #fff, #9bd1e8);
+            box-shadow: 0 20px 70px rgba(39, 105, 134, .16);
+            transform: rotate(2deg)
+        }
+
+        .portrait-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 38%
+        }
+
+        .orbit-label {
+            position: absolute;
+            color: var(--muted);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .17em
+        }
+
+        .label-top {
+            top: 7%;
+            left: 6%
+        }
+
+        .label-bottom {
+            right: 3%;
+            bottom: 4%
+        }
+
+        .page-hero {
+            position: relative;
+            padding-block: 90px 75px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .page-hero h1 {
+            max-width: 750px;
+            margin-bottom: 20px
+        }
+
+        .page-hero-lead {
+            max-width: 550px;
+            margin: 0
+        }
+
+        .page-index {
+            position: absolute;
+            right: 0;
+            bottom: 70px;
+            color: rgba(67, 140, 172, .3);
+            font: 800 35px/.92 var(--display);
+            text-align: right
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 100px;
+            padding-block: 78px 90px
+        }
+
+        .about-copy h2,
+        .page-content h2 {
+            font-family: var(--display);
+            font-size: 40px;
+            line-height: 1.2
+        }
+
+        .about-copy>p:not(.eyebrow) {
+            max-width: 610px;
+            color: var(--muted)
+        }
+
+        .quote-card {
+            max-width: 580px;
+            margin-top: 33px;
+            padding: 23px 26px 22px;
+            border-left: 2px solid var(--blue);
+            background: rgba(255, 255, 255, .48)
+        }
+
+        .quote-card blockquote {
+            margin: 0;
+            font: 700 14px/1.8 var(--display)
+        }
+
+        .student-card {
+            padding: 19px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .66)
+        }
+
+        .portrait-compact {
+            width: 100%;
+            aspect-ratio: 1.25;
+            border-width: 4px;
+            border-radius: 3px;
+            transform: none
+        }
+
+        .student-card h3 {
+            font-size: 18px
+        }
+
+        .student-major {
+            color: var(--muted);
+            font-size: 11px
+        }
+
+        .student-details {
+            display: grid;
+            gap: 9px;
+            margin: 0;
+            padding-top: 14px;
+            border-top: 1px solid var(--line)
+        }
+
+        .student-details div {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 10px
+        }
+
+        .student-details dt {
+            color: var(--muted)
+        }
+
+        .student-details dd {
+            margin: 0;
+            font-weight: 800;
+            text-align: right
+        }
+
+        .page-content {
+            min-height: calc(100vh - 78px);
+            padding-block: 70px 90px
+        }
+
+        .page-heading {
+            margin-bottom: 28px
+        }
+
+        .page-heading h1 {
+            margin-bottom: 8px;
+            font-family: var(--display);
+            font-size: clamp(38px, 6vw, 64px);
+            line-height: 1.05
+        }
+
+        .page-heading p {
+            max-width: 650px;
+            color: var(--muted)
+        }
+
+        .skill-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px
+        }
+
+        .skill-chip {
+            display: inline-flex;
+            min-height: 44px;
+            align-items: center;
+            gap: 11px;
+            padding: 0 15px;
+            border: 1px solid var(--line);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, .63);
+            font-size: 12px;
+            font-weight: 700
+        }
+
+        .skill-chip span {
+            color: var(--blue);
+            font-size: 9px
+        }
+
+        .skill-chip:hover {
+            transform: translateY(-3px);
+            background: #fff
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px
+        }
+
+        .project-card {
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, .58)
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, .82)
+        }
+
+        .project-tag {
+            margin-bottom: 8px;
+            color: var(--blue);
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: .1em
+        }
+
+        .project-card h3 {
+            margin: 0 0 8px
+        }
+
+        .project-card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .journey-list {
+            border-top: 1px solid var(--line)
+        }
+
+        .journey-item {
+            display: grid;
+            grid-template-columns: 65px 1fr auto;
+            gap: 18px;
+            padding-block: 24px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .journey-number {
+            color: var(--blue);
+            font: 800 12px var(--display)
+        }
+
+        .journey-item h3 {
+            margin: 0 0 5px
+        }
+
+        .journey-item p {
+            max-width: 650px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 12px
+        }
+
+        .journey-tag {
+            align-self: start;
+            padding: 4px 8px;
+            border: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 8px;
+            font-weight: 800
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 105px;
+            align-items: start
+        }
+
+        .contact-table {
+            border-top: 1px solid var(--line)
+        }
+
+        .contact-row {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 15px;
+            padding-block: 12px;
+            border-bottom: 1px solid var(--line);
+            font-size: 12px
+        }
+
+        .contact-row>span {
+            color: var(--muted)
+        }
+
+        .contact-row strong {
+            font-weight: 800
+        }
+
+        .contact-socials {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 17px
+        }
+
+        .contact-socials>a {
+            display: grid;
+            min-height: 58px;
+            grid-template-columns: 27px 1fr auto;
+            gap: 8px;
+            align-items: center;
+            padding: 8px 11px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .5)
+        }
+
+        .contact-socials>a>span:first-child {
+            display: grid;
+            width: 25px;
+            aspect-ratio: 1;
+            place-items: center;
+            border-radius: 50%;
+            background: var(--deep);
+            color: #fff
+        }
+
+        .contact-photo {
+            position: relative;
+            min-height: 300px;
+            overflow: hidden;
+            border-radius: 4px;
+            background: linear-gradient(160deg, #fff, #b0ddec)
+        }
+
+        .contact-portrait {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 32%
+        }
+
+        .location-block {
+            display: grid;
+            grid-template-columns: 30px 1fr;
+            gap: 12px;
+            padding-top: 22px
+        }
+
+        .location-block div {
+            display: grid;
+            gap: 2px
+        }
+
+        .location-block div>span {
+            color: var(--blue);
+            font-size: 8px;
+            font-weight: 800;
+            letter-spacing: .14em
+        }
+
+        .location-block strong {
+            font: 800 13px var(--display)
+        }
+
+        .location-block p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 10px
+        }
+
+        .location-hometown {
+            margin-top: 17px;
+            padding-top: 17px;
+            border-top: 1px solid var(--line)
+        }
+
+        @media(max-width:800px) {
+
+            .page-width,
+            .site-header {
+                width: calc(100% - 40px)
+            }
+
+            .main-menu {
+                gap: 14px
+            }
+
+            .home-hero {
+                grid-template-columns: 1fr;
+                padding-block: 50px
+            }
+
+            .hero-art {
+                min-height: 360px
+            }
+
+            .about-layout,
+            .contact-layout {
+                grid-template-columns: 1fr;
+                gap: 35px
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .page-width,
+            .site-header {
+                width: calc(100% - 36px)
+            }
+
+            .site-header {
+                min-height: 68px
+            }
+
+            .wordmark {
+                font-size: 11px
+            }
+
+            .menu-toggle {
+                display: flex;
+                width: 40px;
+                height: 40px;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                border: 1px solid var(--line);
+                background: rgba(255, 255, 255, .55)
+            }
+
+            .menu-toggle span {
+                width: 16px;
+                height: 1px;
+                background: var(--deep)
+            }
+
+            .main-menu {
+                position: absolute;
+                top: 68px;
+                right: -18px;
+                left: -18px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 8px 18px 14px;
+                border-bottom: 1px solid var(--line);
+                background: rgba(245, 251, 254, .97)
+            }
+
+            .main-menu.is-open {
+                display: flex
+            }
+
+            .menu-link {
+                padding: 12px 4px
+            }
+
+            .menu-link::after {
+                right: auto;
+                bottom: 7px;
+                width: 36px
+            }
+
+            .hero-copy h1,
+            .page-hero h1 {
+                font-size: 43px
+            }
+
+            .hero-facts {
+                gap: 17px
+            }
+
+            .hero-facts span {
+                font-size: 9px
+            }
+
+            .hero-art {
+                min-height: 330px
+            }
+
+            .page-content {
+                padding-block: 48px
+            }
+
+            .page-heading h1 {
+                font-size: 42px
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr
+            }
+
+            .journey-item {
+                grid-template-columns: 30px 1fr
+            }
+
+            .journey-tag {
+                grid-column: 2;
+                justify-self: start
+            }
+
+            .contact-layout {
+                gap: 35px
+            }
+
+            .contact-socials {
+                grid-template-columns: 1fr
+            }
+
+            .contact-row {
+                grid-template-columns: 105px 1fr
+            }
+
+            .contact-photo {
+                min-height: 245px
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <a class="wordmark" href="#home">NGÔ NGỌC ANH KHOA<span class="wordmark-dot">.</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu"
+            aria-label="Mở menu"><span></span><span></span></button>
+        <nav class="main-menu" id="main-menu" aria-label="Điều hướng chính">
+            <a class="menu-link is-active" href="#home" aria-current="page">Tổng quan</a><a class="menu-link"
+                href="#about">Giới thiệu</a><a class="menu-link" href="#skills">Kỹ năng</a><a class="menu-link"
+                href="#projects">Dự án</a><a class="menu-link" href="#journey">Hành trình</a><a class="menu-link"
+                href="#contact">Liên hệ</a>
+        </nav>
+    </header>
+    <main>
+        <div class="page-view" data-page-view="home">
+            <section class="home-hero page-width" id="home">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span class="eyebrow-mark"></span>SINH VIÊN CÔNG NGHỆ THÔNG TIN</p>
+                    <h1><span class="name-highlight">Xin chào mình là Anh Khoa</span></h1>
+                    <p class="hero-intro">Một người trẻ yêu công nghệ, thích học điều mới và tin rằng mỗi dòng code đều
+                        có thể mở ra một chân trời khác.</p>
+                    <div class="hero-actions"><a class="button button-primary" href="#about">Khám phá câu chuyện
+                            <span>↗</span></a><a class="text-link" href="#contact">Kết nối với mình <span>→</span></a>
+                    </div>
+                    <div class="hero-facts">
+                        <div><strong>Năm 2</strong><span>Hành trình đại học</span></div>
+                        <div><strong>25CT114</strong><span>Lớp Công nghệ thông tin</span></div>
+                        <div><strong>LHU</strong><span>Đại học Lạc Hồng</span></div>
+                    </div>
+                </div>
+                <div class="hero-art">
+                    <div class="portrait-placeholder"><img class="portrait-image" src="banthan.jpg"
+                            alt="Chân dung Ngô Ngọc Anh Khoa"></div><span class="orbit-label label-top">LEARN / BUILD /
+                        GROW</span><span class="orbit-label label-bottom">ĐỒNG NAI · VIỆT NAM</span>
+                </div>
+            </section>
+        </div>
+        <div class="page-view" data-page-view="about" hidden>
+            <section class="page-hero page-width">
+                <p class="eyebrow"><span class="eyebrow-mark"></span>GIỚI THIỆU · 02 / 06</p>
+                <h1>Một hành trình<br><span class="name-highlight">đang lớn lên.</span></h1>
+                <p class="page-hero-lead">Mình là Ngô Ngọc Anh Khoa, sinh viên ngành Công nghệ Thông tin. Đây là câu
+                    chuyện và những dấu mốc trên đường đi.</p>
+            </section>
+            <section class="about-layout page-width">
+                <div class="about-copy">
+                    <p class="eyebrow">01 — XIN CHÀO</p>
+                    <h2>Luôn tò mò<br>về thế giới số.</h2>
+                    <p>Mình yêu thích công nghệ, có tinh thần học hỏi và luôn muốn khám phá những kiến thức mới trong
+                        lĩnh vực lập trình và máy tính. Mỗi môn học, dự án hay thử thách đều là một cơ hội để mình tiến
+                        thêm một bước.</p>
+                    <p>Hai năm học tập tại trường mang đến cho mình kiến thức, lần thử sức, khó khăn đã vượt qua và bài
+                        học giúp mình trưởng thành hơn.</p>
+                    <div class="quote-card">
+                        <blockquote>Hành trình của tôi vẫn đang tiếp diễn, và mỗi dòng code hôm nay là một bước tiến đến
+                            phiên bản tốt hơn của chính mình ngày mai.</blockquote>
+                    </div>
+                </div>
+                <aside class="student-card">
+                    <div class="portrait-placeholder portrait-compact"><img class="portrait-image" src="banthan.jpg"
+                            alt="Ngô Ngọc Anh Khoa"></div>
+                    <h3>Ngô Ngọc Anh Khoa</h3>
+                    <p class="student-major">Công nghệ Thông tin</p>
+                    <dl class="student-details">
+                        <div>
+                            <dt>Trường</dt>
+                            <dd>Đại học Lạc Hồng</dd>
+                        </div>
+                        <div>
+                            <dt>Lớp</dt>
+                            <dd>25CT114</dd>
+                        </div>
+                        <div>
+                            <dt>Mã sinh viên</dt>
+                            <dd>125002142</dd>
+                        </div>
+                        <div>
+                            <dt>Năm học</dt>
+                            <dd>Năm thứ hai</dd>
+                        </div>
+                    </dl>
+                </aside>
+            </section>
+        </div>
+        <div class="page-view" data-page-view="skills" hidden>
+            <section class="page-content page-width">
+                <div class="page-heading">
+                    <p class="eyebrow"><span class="eyebrow-mark"></span>KỸ NĂNG · 03 / 06</p>
+                    <h1>Những điều mình<br><span class="name-highlight">đang học.</span></h1>
+                    <p>Mỗi kỹ năng là một nền tảng để mình thực hành, tạo sản phẩm và hoàn thiện tư duy lập trình.</p>
+                </div>
+                <div class="skill-cloud"><span class="skill-chip"><span>01</span>HTML</span><span
+                        class="skill-chip"><span>02</span>CSS</span><span
+                        class="skill-chip"><span>03</span>JavaScript</span><span
+                        class="skill-chip"><span>04</span>Python</span><span
+                        class="skill-chip"><span>05</span>SQL</span><span
+                        class="skill-chip"><span>06</span>IoT</span><span class="skill-chip"><span>07</span>Mạng máy
+                        tính</span></div>
+            </section>
+        </div>
+        <div class="page-view" data-page-view="projects" hidden>
+            <section class="page-content page-width">
+                <div class="page-heading">
+                    <p class="eyebrow"><span class="eyebrow-mark"></span>DỰ ÁN · 04 / 06</p>
+                    <h1>Dự án và<br><span class="name-highlight">dấu mốc.</span></h1>
+                    <p>Những nội dung đã và đang được mình thực hành trong quá trình học tập.</p>
+                </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <div class="project-tag">WEB DEVELOPMENT</div>
+                        <h3>Website Portfolio cá nhân</h3>
+                        <p>Xây dựng giao diện giới thiệu bản thân bằng HTML, CSS và JavaScript.</p>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-tag">PYTHON · ASU</div>
+                        <h3>Advanced Python Packages</h3>
+                        <p>Hoàn thành khóa học Python phân tích dữ liệu kinh doanh.</p>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-tag">DATABASE</div>
+                        <h3>Bài tập SQL</h3>
+                        <p>Thực hành truy vấn và tư duy thiết kế cơ sở dữ liệu quan hệ.</p>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-tag">INTERNET OF THINGS</div>
+                        <h3>Khám phá IoT</h3>
+                        <p>Nghiên cứu kết nối thiết bị, thu thập và xử lý dữ liệu.</p>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div class="page-view" data-page-view="journey" hidden>
+            <section class="page-content page-width">
+                <div class="page-heading">
+                    <p class="eyebrow"><span class="eyebrow-mark"></span>HÀNH TRÌNH · 05 / 06</p>
+                    <h1>Từng bước<br><span class="name-highlight">một.</span></h1>
+                </div>
+                <div class="journey-list">
+                    <article class="journey-item"><span class="journey-number">01</span>
+                        <div>
+                            <h3>Nhập môn công nghệ</h3>
+                            <p>Bắt đầu xây dựng nền tảng lập trình, máy tính và tư duy giải quyết vấn đề.</p>
+                        </div><span class="journey-tag">NỀN TẢNG</span>
+                    </article>
+                    <article class="journey-item"><span class="journey-number">02</span>
+                        <div>
+                            <h3>Học bằng cách thực hành</h3>
+                            <p>Thử sức với HTML, CSS, JavaScript, Python, SQL, IoT và mạng máy tính.</p>
+                        </div><span class="journey-tag">THỰC HÀNH</span>
+                    </article>
+                    <article class="journey-item"><span class="journey-number">03</span>
+                        <div>
+                            <h3>Bồi đắp kiến thức Python</h3>
+                            <p>Hoàn thành chứng chỉ ASU và tiếp tục củng cố kỹ năng chuyên môn.</p>
+                        </div><span class="journey-tag">ASU · PYTHON</span>
+                    </article>
+                    <article class="journey-item"><span class="journey-number">04</span>
+                        <div>
+                            <h3>Phấn đấu phát triển</h3>
+                            <p>Trở thành lập trình viên có năng lực và tạo ra sản phẩm công nghệ hữu ích.</p>
+                        </div><span class="journey-tag">ĐỊNH HƯỚNG</span>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <div class="page-view" data-page-view="contact" hidden>
+            <section class="page-hero page-width">
+                <p class="eyebrow"><span class="eyebrow-mark"></span>LIÊN HỆ · 06 / 06</p>
+                <h1>Một lời chào,<br><span class="name-highlight">một kết nối mới.</span></h1>
+                <p class="page-hero-lead">Bạn có thể tìm thấy mình qua những thông tin bên dưới.</p>
+            </section>
+            <section class="page-content page-width contact-layout">
+                <div>
+                    <p class="eyebrow">THÔNG TIN LIÊN HỆ</p>
+                    <h2>Ngô Ngọc Anh Khoa</h2>
+                    <div class="contact-table">
+                        <div class="contact-row"><span>Trường</span><strong>Đại học Lạc Hồng</strong></div>
+                        <div class="contact-row"><span>Lớp</span><strong>25CT114</strong></div>
+                        <div class="contact-row"><span>Mã sinh viên</span><strong>125002142</strong></div>
+                        <div class="contact-row"><span>Tình trạng</span><strong>Đang học</strong></div>
+                        <div class="contact-row"><span>Mối quan hệ</span><strong>Đã có</strong></div>
+                        <div class="contact-row"><span>SĐT / Zalo</span><strong><a href="tel:0342024494">0342 024
+                                    494</a></strong></div>
+                    </div>
+                    <div class="contact-socials"><a href="https://www.facebook.com/thdnnak2827" target="_blank"
+                            rel="noreferrer"><span>f</span><span>Facebook<small>Trang cá
+                                    nhân</small></span><b>↗</b></a><a href="https://www.tiktok.com/@duyencute2728"
+                            target="_blank" rel="noreferrer"><span>♪</span><span>TikTok<small>Trang cá
+                                    nhân</small></span><b>↗</b></a></div>
+                </div>
+                <aside>
+                    <div class="contact-photo"><img class="contact-portrait" src="banthan.jpg" alt="Ngô Ngọc Anh Khoa">
+                    </div>
+                    <div class="location-block"><span>⌖</span>
+                        <div><span>TRƯỜNG ĐẠI HỌC</span><strong>Đại học Lạc Hồng</strong>
+                            <p>10 Huỳnh Văn Nghệ, Trấn Biên,<br>Đồng Nai, Việt Nam</p>
+                        </div>
+                    </div>
+                    <div class="location-block location-hometown"><span>⌖</span>
+                        <div><span>QUÊ QUÁN</span><strong>Đông Hòa, Đắk Lắk</strong>
+                            <p>Khu phố Thạch Chẩm, Phường Đông Hòa,<br>Đắk Lắk, Việt Nam</p>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <div class="page-width footer-main">
+            <div><a class="wordmark" href="#home">NGÔ NGỌC ANH KHOA<span class="wordmark-dot">.</span></a>
+                <p class="footer-note">Một góc nhỏ ghi lại hành trình lớn.</p>
+            </div>
+            <div class="footer-school"><strong>Đại học Lạc Hồng</strong><span>10 Huỳnh Văn Nghệ, Trấn Biên, Đồng
+                    Nai</span></div>
+            <div class="footer-social"><a href="tel:0342024494">0342 024 494</a><a
+                    href="https://www.facebook.com/thdnnak2827" target="_blank" rel="noreferrer">Facebook ↗</a><a
+                    href="https://www.tiktok.com/@duyencute2728" target="_blank" rel="noreferrer">TikTok ↗</a></div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle'), mainMenu = document.querySelector('.main-menu');
+        menuToggle.addEventListener('click', () => { const open = menuToggle.getAttribute('aria-expanded') === 'true'; menuToggle.setAttribute('aria-expanded', String(!open)); mainMenu.classList.toggle('is-open', !open) });
+        const views = document.querySelectorAll('[data-page-view]'), links = document.querySelectorAll('a[href^="#"]');
+        function showPage(id, history = true) { const view = document.querySelector(`[data-page-view="${id}"]`); if (!view) return; views.forEach(v => v.hidden = v !== view); document.querySelectorAll('.menu-link').forEach(a => { const active = a.getAttribute('href') === `#${id}`; a.classList.toggle('is-active', active); active ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current') }); mainMenu.classList.remove('is-open'); menuToggle.setAttribute('aria-expanded', 'false'); if (history && location.hash !== `#${id}`) window.history.pushState(null, '', `#${id}`); window.scrollTo({ top: 0, behavior: 'instant' }) }
+        links.forEach(a => a.addEventListener('click', e => { const id = a.getAttribute('href').slice(1); if (!document.querySelector(`[data-page-view="${id}"]`)) return; e.preventDefault(); showPage(id) }));
+        window.addEventListener('popstate', () => showPage(location.hash.slice(1) || 'home', false)); showPage(location.hash.slice(1) || 'home', false);
+    </script>
+</body>
+
+</html>
