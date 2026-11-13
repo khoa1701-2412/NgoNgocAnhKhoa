@@ -1,0 +1,20 @@
+Trang web CV
+Tổng quan thành Trang Chủ
+  + Ảnh avatar rộng giống như bìa sách
+Giới thiệu bản thân: có sở thích, kỹ năng, đam mê - Chơi game - Âm nhạc - Thể Thao - Code
+Kỹ Năng thành Chuyên Ngành
+Hành trình thành Cá Nhân
+Liên hệ thêm ảnh mã QR tôi tự đặt
+Dự án thành Thành tựu
+   - Chứng minh có hình ảnh
+   - Thành tựu học sinh giỏi
+Website Protfolio
+   - Thành tựu của ngành CNTT
+Màu thì 1 màu chủ đạo đúng màu của dân CNTT
+Fix <span class="name-highlight rotating-title" id="rotating-title" aria-live="polite">Xin chào mình là Anh Khoa</span> "Xin chào mình là" (màu đen) "Anh Khoa" (Màu Xanh Dương).
+Giới thiệu ảnh trình bày giống Trang Chủ
+Hồ sơ sinh viên thành Hồ sơ cá nhân
+Liên hệ: bỏ phần Mối quan hệ
+Bỏ đi Quê quán và địa chỉ quê quán
+Những hoạt động tham gia có hình ảnh tại thành tựu ( ảnh trên 5 hoạt động )
+Chân trang có bản đồ địa chỉ trường đại học lạc hồng
